@@ -1,0 +1,29 @@
+{
+  "name": "ethwallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbvora03/ETH-Wallet.git"
+  },
+  "author": "Dhruv Vora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dbvora03/ETH-Wallet/issues"
+  },
+  "homepage": "https://github.com/dbvora03/ETH-Wallet#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "env": "0.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.7",
+    "nodemon": "^2.0.6",
+    "request": "^2.88.2"
+  }
+}
