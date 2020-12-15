@@ -7,8 +7,6 @@ require('dotenv').config()
 const app = express()
 const PORT = 3001
 
-
-
 // Connecting MongoDB
 mongoose.connect(
   process.env.MONGOURI, 
@@ -25,7 +23,7 @@ app.use(express.json())
 
 require("./models/user")
 
-
+app.use(require("./routes/walletFunction"))
 app.use(require("./routes/authentication"))
 
 axios.get('https://blockchain.info/stats?format-json').then((error, response, body) => {

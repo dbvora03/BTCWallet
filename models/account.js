@@ -22,7 +22,6 @@ const accountSchema = new mongoose.Schema({
     belongsTo: {
         type:ObjectID,
         ref:"User"
-
     }
 })
 

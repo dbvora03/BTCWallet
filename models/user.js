@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const {ObjectId} = mongoose.Schema.Types
 
 const userSchema = new mongoose.Schema({
 
@@ -14,6 +15,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-})
+    transHistory:[{type:ObjectId, ref:"Transaction"}]
+},{timestamps: true})
 
 mongoose.model("User", userSchema)
