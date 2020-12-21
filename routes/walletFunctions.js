@@ -24,7 +24,6 @@ const transporter = nodemailer.createTransport(sendGridTransport({
     }
 }))
 
-
 //REMEMBER!!!! All transactions are in satoshis
 //1 BTC = 100,000,000 Satoshis
 // 1 Satoshi = 0.000000001 BTC
