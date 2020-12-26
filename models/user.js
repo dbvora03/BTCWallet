@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    transHistory:[{type:ObjectId, ref:"Transaction"}]
+    transHistory:[{type:ObjectId, ref:"Transaction"}],
+    accounts:[{type:ObjectId, ref:"Account"}]
 },{timestamps: true})
 
 mongoose.model("User", userSchema)

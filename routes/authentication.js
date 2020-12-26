@@ -14,28 +14,22 @@ router.post("/signup", (req, res) => {
     while (!username || !email || !password || !secondPassword) {
         res.status(422).json({error: "Please enter all of the fields"})
     }
-    console.log("pitstop 1")
     if (!(password === secondPassword)){
         res.status(422).json({error: "Passwords do not match"})
     }
-    console.log("pitstop 2")
 
 
     User.findOne({email:email}).then((savedUser)=> {
-        console.log("pitstop 3")
 
         if(savedUser) {
             res.status(422).json({error: "user already exists, log in here"})
         } 
-        console.log("pitstop 4")
 
         User.findOne({username:username}).then((savedUser) => {
-            console.log("pitstop 5")
 
             if(savedUser) {
                 res.status(422).json({error: "user already exists, log in here"})
             } 
-            console.log("pitstop 6")
 
             //Crypt the password
             bcrypt.hash(password, 4).then(async (hashedpassword)=> {
@@ -45,7 +39,6 @@ router.post("/signup", (req, res) => {
                     email,
                     password:hashedpassword
                 })
-                console.log("pitstop 7")
 
                 const daUser = await user.save()
                 res.json({message:"saved"}).catch((err) => {

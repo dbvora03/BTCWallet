@@ -13,6 +13,8 @@ const sendGridTransport = require("nodemailer-sendgrid-transport")
 const { default: Axios } = require("axios")
 const fs = require("fs")
 const {promisify} = require("util")
+const { post } = require("./authentication")
+const { json } = require("express")
 const readFile = promisify(fs.readFile)
 
 
@@ -74,7 +76,29 @@ router.get("/getQRCode", requirelogin, (req, res) => {
 
 })
 
-router.get("/transaction", requirelogin, (req, res)=> {
+router.post("/transfer", requirelogin, (req, res)=> {
+    const {inputAddy, outputAddy, amount} = req.body
+
+    Account.findOne({
+        address:outputAddy,
+        belongsTo: req.user._id
+    }).limit(1).exec(err=> {
+        if(err) {
+            res.json({"error": "That account does not belong to you!!"})
+            return 
+        }
+    })
+
+    var newtx = {
+        inputs: [{addresses: [`${inputAddy}`]}],
+        outputs: [{addresses: [`${outputAddy}`], value:amount}]
+    }
+
+})
+
+
+
+router.post("/transaction", requirelogin, (req, res)=> {
     const {inputAddy, outputAddy, amount} = req.body
 
     var newtx = {
@@ -86,7 +110,8 @@ router.get("/transaction", requirelogin, (req, res)=> {
         const transaction = new Transaction({
             sender:req.user,
             reciever:outputAddy,
-            amount:amount
+            amount:amount,
+            date: new Date()
         })
         transaction.save().then(res => {
             res.json({message: "Transaction completed successfully, check your email for a reciept"})

@@ -22,6 +22,8 @@ app.use(express.json())
 
 
 require("./models/user")
+require("./models/account")
+require("./models/transaction")
 
 app.use(require("./routes/walletFunction"))
 app.use(require("./routes/authentication"))

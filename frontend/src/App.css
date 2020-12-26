@@ -1,0 +1,54 @@
+.auth-card {
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 10px auto;
+  left: 10px;
+}
+
+.mycard {
+  margin-top: 80px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item {
+  width: 30%;
+}
+
+.welcome {
+  margin: 30px;
+}
+
+.firstCol {
+
+  margin-left: 100px;
+
+}
+
+.cardedit {
+  padding-bottom: 5px !important;
+  padding-top: 10px !important;
+}
+
+.buttonText {
+  color: whitesmoke;
+}
+
+.btn-large {
+  padding: 0px 10px !important;
+}
+
+.pie {
+  width:auto;
+  height: 500px;
+}
+
+.right-card {
+  margin-top:75px !important;
+  margin-right:10px;
+}
