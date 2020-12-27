@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {Link} from 'react-router-dom'
+
 
 //Components
 
@@ -118,6 +118,7 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className="card darken-1 ">
                     <div className="card-content black-text cardedit green lighten-4">
                         <div className="row">
@@ -133,14 +134,18 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
+
                 </div>
                 <div className="col s4 m4">
                     <div class="row">
                         <div class="col s12 m5">
+
                             <div class="card-panel right-card">
                                 <h3>Portfolio </h3>
+                                
                                 <img className="pie" src="https://landing.moqups.com/img/content/charts-graphs/pie-donut-charts/simple-donut-chart/simple-donut-chart-800.png"></img>
                             </div>
+
                         </div>
                     </div>
                 </div>

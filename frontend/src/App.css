@@ -4,6 +4,8 @@
   max-width: 400px;
   margin: 10px auto;
   left: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mycard {
@@ -51,4 +53,8 @@
 .right-card {
   margin-top:75px !important;
   margin-right:10px;
+}
+
+.transactionTitle {
+  margin-top: 30px !important;
 }
