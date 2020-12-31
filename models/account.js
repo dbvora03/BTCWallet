@@ -2,7 +2,10 @@ const mongoose = require("mongoose")
 const {ObjectID} = mongoose.Schema.Types
 
 const accountSchema = new mongoose.Schema({
-
+    nick: {
+        type: String,
+        required:true
+    },
     privateKey: {
         type: String,
         required:true
@@ -25,4 +28,7 @@ const accountSchema = new mongoose.Schema({
     }
 })
 
-mongoose.model("Account", accountSchema)
+const Account = mongoose.model("Account", accountSchema)
+
+
+module.exports = Account

@@ -13,7 +13,7 @@ const Signin = () => {
 
     const PostData = ()=> {
         fetch("/signin", {
-            methos: "POST",
+            method: "POST",
             headers: {
                 "Content-type":"application/json"
             },

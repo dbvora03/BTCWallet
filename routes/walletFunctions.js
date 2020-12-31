@@ -13,7 +13,7 @@ const sendGridTransport = require("nodemailer-sendgrid-transport")
 const { default: Axios } = require("axios")
 const fs = require("fs")
 const {promisify} = require("util")
-const { post } = require("./authentication")
+const { post, all } = require("./authentication")
 const { json } = require("express")
 const readFile = promisify(fs.readFile)
 
@@ -32,12 +32,13 @@ const transporter = nodemailer.createTransport(sendGridTransport({
 
 router.post("/newAddy", requirelogin, (req, res) => {
     const user = req.user
-     const {nickName} = req.body
+    const {nickName} = req.body
 
     const newAcc = Axios.get('https://api.blockcypher.com/v1/btc/test3/addrs')
     //private, public, address, wif need to be added to schema
 
     const account = new Account ({
+        nick:nickName,
         privateKey:newAcc.data.private,
         publicKey:newAcc.data.public,
         address:newAcc.data.address,
@@ -60,12 +61,24 @@ router.get("/myWallet", requirelogin, (req, res)=>{
 
 router.get("/balance", requirelogin, (req, res)=> {
     const {address} = req.body
-    Axios.get(`https://api.blockcypher.com/v1/btc/test3/addrs/${address}/balance`)
+    Axios.get(`https://api.blockcypher.com/v1/btc/test3/addrs/${address}/balance`).then(result=> {
+        res.json({result})
+    })
+})
+
+router.get("/alltrans", requirelogin, (req, res)=> {
+
+    Transaction.find({sender:req.user._id}).populate("amount", "reciever").then(allTransactions=> {
+        res.json(allTransactions)
+    }).catch(err=> {
+        console.log(err)
+    })
+   
 })
 
 
-router.get("/getQRCode", requirelogin, (req, res) => {
-    const {address} = req.body
+router.get("/getQRCode/:id", requirelogin, (req, res) => {
+    const {address} = req.params.id
     
     qr.toDataURL(address).then((result)=> {
         console.log(result)
@@ -73,7 +86,6 @@ router.get("/getQRCode", requirelogin, (req, res) => {
     }).catch((err)=> {
         console.log(err)
     })
-
 })
 
 router.post("/transfer", requirelogin, (req, res)=> {

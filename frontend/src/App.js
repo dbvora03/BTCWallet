@@ -40,9 +40,9 @@ const RoutyBoi = () => {
     <Switch>
       <Route path="/signin"><Signin/></Route>
       <Route path="/signup"><Signup/></Route>
-      <Route path="/about"><About/></Route>
       <Route path="/main"><MainPage/></Route>
       <Route path="/transaction"><Transaction/></Route>
+      <Route path="/new"><NewAcc/></Route>
     </Switch>
   )
 
