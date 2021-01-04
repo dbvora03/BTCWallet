@@ -1,4 +1,4 @@
-# Dripcoin - `A bitcoin wallet simulator`
+# Dripcoin - A bitcoin wallet simulator
 
 
 Dripcoin is a fullstack MERN application that simulates a bitcoin wallet. I was always interested in learning how crypto-currencies, block chains, and transactions function today. In the progress of developing this application, I gained a great amount of insight into these elements. I dove deep into encryption methods and security measures that are often taken by crypto-currencies to holders. 
